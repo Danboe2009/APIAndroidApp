@@ -13,6 +13,8 @@ import com.webappclouds.apiandroidapp.R;
 import com.webappclouds.apiandroidapp.model.FoodTruck;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -24,13 +26,37 @@ public class FoodTrucksListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_trucks_list);
 
         String url = "https://missingcontroller.com/api/v1/foodtruck";
-        ArrayList<FoodTruck> foodTruckList = new ArrayList<>();
+        final ArrayList<FoodTruck> foodTruckList = new ArrayList<>();
 
         final JsonArrayRequest getTrucks = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 System.out.println(response.toString());
 
+                try {
+                    JSONArray foodTrucks = response;
+                    for (int x = 0; x < foodTrucks.length(); x++) {
+                        JSONObject foodTruck = foodTrucks.getJSONObject(x);
+                        String name = foodTruck.getString("name");
+                        String id = foodTruck.getString("_id");
+                        String foodType = foodTruck.getString("foodtype");
+                        Double avgcost = foodTruck.getDouble("avgcost");
+
+                        JSONObject geometry = foodTruck.getJSONObject("geometry");
+                        JSONObject coordinates = geometry.getJSONObject("coordinates");
+
+                        Double latitude = coordinates.getDouble("lat");
+                        Double longitude = coordinates.getDouble("long");
+
+                        FoodTruck newFoodTruck = new FoodTruck(id, name, foodType, avgcost, latitude, longitude);
+
+                        foodTruckList.add(newFoodTruck);
+                    }
+                } catch (JSONException e) {
+                    Log.e("JSON", "EXC" + e.getLocalizedMessage());
+                }
+
+                System.out.println("This is the first food truck name " + foodTruckList.get(0).getName());
             }
         }, new Response.ErrorListener() {
             @Override
