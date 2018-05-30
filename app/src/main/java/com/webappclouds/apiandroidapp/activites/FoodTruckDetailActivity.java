@@ -31,6 +31,8 @@ public class FoodTruckDetailActivity extends FragmentActivity implements OnMapRe
         avgCost = findViewById(R.id.detail_food_cost);
 
         foodTruck = getIntent().getParcelableExtra(FoodTrucksListActivity.EXTRA_ITEM_TRUCK);
+        updateUI();
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -41,15 +43,23 @@ public class FoodTruckDetailActivity extends FragmentActivity implements OnMapRe
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng foodTruckLocation = new LatLng(foodTruck.getLatitude(), foodTruck.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(foodTruckLocation).title(foodTruck.getName()));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(foodTruckLocation));
+        setUpMap();
     }
 
     private void updateUI() {
         truckName.setText(foodTruck.getName());
         foodType.setText(foodTruck.getFoodType());
         avgCost.setText("$" + foodTruck.getAvgCost());
+    }
+
+    private void setUpMap() {
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.setTrafficEnabled(true);
+        mMap.setIndoorEnabled(true);
+        mMap.setBuildingsEnabled(true);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
     }
 }
