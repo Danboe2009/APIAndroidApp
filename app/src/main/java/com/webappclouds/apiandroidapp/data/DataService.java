@@ -11,6 +11,7 @@ import com.android.volley.toolbox.Volley;
 import com.webappclouds.apiandroidapp.activites.FoodTrucksListActivity;
 import com.webappclouds.apiandroidapp.constants.Constants;
 import com.webappclouds.apiandroidapp.model.FoodTruck;
+import com.webappclouds.apiandroidapp.model.FoodTruckReview;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,6 +77,44 @@ public class DataService {
         Volley.newRequestQueue(context).add(getTrucks);
 
         return foodTruckList;
+    }
 
+    public ArrayList<FoodTruckReview> downloadReviews(Context context, FoodTruck foodTruck) {
+        String url = Constants.GET_REVIEWS + foodTruck.getId();
+        final ArrayList<FoodTruckReview> reviewsList = new ArrayList<>();
+
+        final JsonArrayRequest getReviews = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                System.out.println(response.toString());
+
+                try {
+                    JSONArray reviews = response;
+                    for (int x = 0; x < reviews.length(); x++) {
+                        JSONObject review = reviews.getJSONObject(x);
+                        String title = review.getString("title");
+                        String id = review.getString("_id");
+                        String text = review.getString("text");
+
+                        FoodTruckReview newFoodTruckReview = new FoodTruckReview(id, title, text);
+                        reviewsList.add(newFoodTruckReview);
+                    }
+                } catch (JSONException e) {
+                    Log.e("JSON", "EXC" + e.getLocalizedMessage());
+                }
+
+                //listener.success(true);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.v("API", "Error: " + error.getLocalizedMessage());
+            }
+        });
+
+        Volley.newRequestQueue(context).add(getReviews);
+
+        return reviewsList;
     }
 }
