@@ -14,6 +14,7 @@ import com.android.volley.toolbox.Volley;
 import com.webappclouds.apiandroidapp.R;
 import com.webappclouds.apiandroidapp.adapter.FoodTruckAdapter;
 import com.webappclouds.apiandroidapp.model.FoodTruck;
+import com.webappclouds.apiandroidapp.view.ItemDecorator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -66,9 +67,11 @@ public class FoodTrucksListActivity extends AppCompatActivity {
                 RecyclerView recyclerView = findViewById(R.id.recycler_foodtruck);
                 recyclerView.setHasFixedSize(true);
                 adapter = new FoodTruckAdapter(foodTruckList);
+                recyclerView.setAdapter(adapter);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(linearLayoutManager);
+                recyclerView.addItemDecoration(new ItemDecorator(0, 0, 0, 10));
             }
         }, new Response.ErrorListener() {
             @Override
