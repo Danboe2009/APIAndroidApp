@@ -45,7 +45,7 @@ public class FoodTruckDetailActivity extends FragmentActivity implements OnMapRe
 
         LatLng foodTruckLocation = new LatLng(foodTruck.getLatitude(), foodTruck.getLongitude());
         mMap.addMarker(new MarkerOptions().position(foodTruckLocation).title(foodTruck.getName()));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(foodTruckLocation));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(foodTruckLocation, 10));
         setUpMap();
     }
 
