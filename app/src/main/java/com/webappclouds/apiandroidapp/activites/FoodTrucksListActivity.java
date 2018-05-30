@@ -2,6 +2,8 @@ package com.webappclouds.apiandroidapp.activites;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -10,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.webappclouds.apiandroidapp.R;
+import com.webappclouds.apiandroidapp.adapter.FoodTruckAdapter;
 import com.webappclouds.apiandroidapp.model.FoodTruck;
 
 import org.json.JSONArray;
@@ -19,6 +22,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class FoodTrucksListActivity extends AppCompatActivity {
+
+    private FoodTruckAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,13 @@ public class FoodTrucksListActivity extends AppCompatActivity {
                 }
 
                 System.out.println("This is the first food truck name " + foodTruckList.get(0).getName());
+
+                RecyclerView recyclerView = findViewById(R.id.recycler_foodtruck);
+                recyclerView.setHasFixedSize(true);
+                adapter = new FoodTruckAdapter(foodTruckList);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(linearLayoutManager);
             }
         }, new Response.ErrorListener() {
             @Override
