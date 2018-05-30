@@ -1,5 +1,6 @@
 package com.webappclouds.apiandroidapp.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,12 +17,24 @@ import java.util.ArrayList;
 public class FoodTrucksListActivity extends AppCompatActivity {
 
     private FoodTruckAdapter adapter;
-    private ArrayList<FoodTruck> trucks;
+    public static final String EXTRA_ITEM_TRUCK = "TRUCK";
+    private static FoodTrucksListActivity foodTrucksListActivity;
+    private ArrayList<FoodTruck> trucks = new ArrayList<>();
+
+    public static FoodTrucksListActivity getFoodTrucksListActivity() {
+        return foodTrucksListActivity;
+    }
+
+    public static void setFoodTrucksListActivity(FoodTrucksListActivity foodTrucksListActivity) {
+        FoodTrucksListActivity.foodTrucksListActivity = foodTrucksListActivity;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_trucks_list);
+
+        setFoodTrucksListActivity(this);
 
         TrucksDownloaded listener = new TrucksDownloaded() {
             @Override
@@ -49,5 +62,11 @@ public class FoodTrucksListActivity extends AppCompatActivity {
 
     public interface TrucksDownloaded {
         void success(Boolean success);
+    }
+
+    public void loadFoodTruckDetailActivity(FoodTruck truck) {
+        Intent intent = new Intent(FoodTrucksListActivity.this, FoodTruckDetailActivity.class);
+        intent.putExtra(FoodTrucksListActivity.EXTRA_ITEM_TRUCK, truck);
+        startActivity(intent);
     }
 }

@@ -1,6 +1,9 @@
 package com.webappclouds.apiandroidapp.model;
 
-public class FoodTruck {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class FoodTruck implements Parcelable {
 
     private String id = "";
     private String name = "";
@@ -16,6 +19,42 @@ public class FoodTruck {
         this.avgCost = avgCost;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public static final Parcelable.Creator<FoodTruck> CREATOR = new Parcelable.Creator<FoodTruck>() {
+        @Override
+        public FoodTruck createFromParcel(Parcel in) {
+            return new FoodTruck(in);
+        }
+
+        @Override
+        public FoodTruck[] newArray(int size) {
+            return new FoodTruck[size];
+        }
+    };
+
+    private FoodTruck(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        foodType = in.readString();
+        avgCost = in.readDouble();
+        latitude = in.readDouble();
+        longitude = in.readDouble();
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(name);
+        parcel.writeString(foodType);
+        parcel.writeDouble(avgCost);
+        parcel.writeDouble(latitude);
+        parcel.writeDouble(longitude);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public String getId() {

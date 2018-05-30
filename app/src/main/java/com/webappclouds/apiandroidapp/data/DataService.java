@@ -9,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.webappclouds.apiandroidapp.activites.FoodTrucksListActivity;
+import com.webappclouds.apiandroidapp.constants.Constants;
 import com.webappclouds.apiandroidapp.model.FoodTruck;
 
 import org.json.JSONArray;
@@ -31,7 +32,7 @@ public class DataService {
     // Request all the FoodTrucks
 
     public ArrayList<FoodTruck> downloadAllFoodTrucks(Context context, final FoodTrucksListActivity.TrucksDownloaded listener) {
-        String url = "https://missingcontroller.com/api/v1/foodtruck";
+        String url = Constants.GET_FOOD_TRUCKS;
         final ArrayList<FoodTruck> foodTruckList = new ArrayList<>();
 
         final JsonArrayRequest getTrucks = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {

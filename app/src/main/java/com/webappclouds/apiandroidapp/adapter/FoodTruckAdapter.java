@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.webappclouds.apiandroidapp.R;
+import com.webappclouds.apiandroidapp.activites.FoodTrucksListActivity;
 import com.webappclouds.apiandroidapp.holder.FoodTruckHolder;
 import com.webappclouds.apiandroidapp.model.FoodTruck;
 
@@ -24,6 +25,13 @@ public class FoodTruckAdapter extends RecyclerView.Adapter<FoodTruckHolder> {
 
         final FoodTruck truck = trucks.get(position);
         holder.updateUI(truck);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FoodTrucksListActivity.getFoodTrucksListActivity().loadFoodTruckDetailActivity(truck);
+            }
+        });
     }
 
     @Override
