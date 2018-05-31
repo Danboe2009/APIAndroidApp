@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private String authToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        final String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -108,10 +109,17 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(true);
 
             // Use our auth service api calls.
-            RegisterInterface registerInterface = new RegisterInterface() {
+            final LoginInterface loginInterface = new LoginInterface() {
                 @Override
                 public void success(Boolean success) {
 
+                }
+            };
+
+            RegisterInterface registerInterface = new RegisterInterface() {
+                @Override
+                public void success(Boolean success) {
+                    AuthService.getInstance().loginUser(email, password, getBaseContext(), loginInterface);
                 }
             };
 
@@ -120,6 +128,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public interface RegisterInterface {
+        void success(Boolean success);
+    }
+
+    public interface LoginInterface {
         void success(Boolean success);
     }
 
