@@ -9,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.webappclouds.apiandroidapp.activites.FoodTrucksListActivity;
+import com.webappclouds.apiandroidapp.activites.ReviewsActivity;
 import com.webappclouds.apiandroidapp.constants.Constants;
 import com.webappclouds.apiandroidapp.model.FoodTruck;
 import com.webappclouds.apiandroidapp.model.FoodTruckReview;
@@ -79,7 +80,7 @@ public class DataService {
         return foodTruckList;
     }
 
-    public ArrayList<FoodTruckReview> downloadReviews(Context context, FoodTruck foodTruck) {
+    public ArrayList<FoodTruckReview> downloadReviews(Context context, FoodTruck foodTruck, final ReviewsActivity.ReviewInterface listener) {
         String url = Constants.GET_REVIEWS + foodTruck.getId();
         final ArrayList<FoodTruckReview> reviewsList = new ArrayList<>();
 
@@ -103,7 +104,7 @@ public class DataService {
                     Log.e("JSON", "EXC" + e.getLocalizedMessage());
                 }
 
-                //listener.success(true);
+                listener.success(true);
 
             }
         }, new Response.ErrorListener() {
