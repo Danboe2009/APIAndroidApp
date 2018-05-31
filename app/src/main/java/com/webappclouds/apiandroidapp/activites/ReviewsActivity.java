@@ -2,11 +2,16 @@ package com.webappclouds.apiandroidapp.activites;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.webappclouds.apiandroidapp.R;
+import com.webappclouds.apiandroidapp.adapter.ReviewAdapter;
 import com.webappclouds.apiandroidapp.data.DataService;
 import com.webappclouds.apiandroidapp.model.FoodTruck;
 import com.webappclouds.apiandroidapp.model.FoodTruckReview;
+import com.webappclouds.apiandroidapp.view.ItemDecorator;
 
 import java.util.ArrayList;
 
@@ -14,6 +19,7 @@ public class ReviewsActivity extends AppCompatActivity {
 
     private FoodTruck foodTruck;
     private ArrayList<FoodTruckReview> reviews = new ArrayList<>();
+    private ReviewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +33,10 @@ public class ReviewsActivity extends AppCompatActivity {
             @Override
             public void success(Boolean success) {
                 if (success) {
-                    System.out.println(reviews);
+                    setUpRecycler();
+                    if (reviews.size() == 0) {
+                        Toast.makeText(getBaseContext(), "No reviews for this food truck", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         };
@@ -37,5 +46,16 @@ public class ReviewsActivity extends AppCompatActivity {
 
     public interface ReviewInterface {
         void success(Boolean success);
+    }
+
+    private void setUpRecycler() {
+        RecyclerView recyclerView = findViewById(R.id.recycler_reviews);
+        recyclerView.setHasFixedSize(true);
+        adapter = new ReviewAdapter(reviews);
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.addItemDecoration(new ItemDecorator(0, 0, 0, 10));
     }
 }
