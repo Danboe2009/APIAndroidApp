@@ -1,6 +1,7 @@
 package com.webappclouds.apiandroidapp.data;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -8,6 +9,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.webappclouds.apiandroidapp.activites.LoginActivity;
 import com.webappclouds.apiandroidapp.constants.Constants;
 
 import org.json.JSONException;
@@ -32,7 +35,7 @@ public class AuthService {
         return authToken;
     }
 
-    public void registerUser(String email, String password, Context context) {
+    public void registerUser(String email, String password, Context context, final LoginActivity.RegisterInterface listener) {
 
         try {
             String url = Constants.REGISTER;
@@ -44,12 +47,14 @@ public class AuthService {
             StringRequest registerRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-
+                    Log.i("Volley", response);
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    if (error.networkResponse.statusCode == 409) {
+                        listener.success(true);
+                    }
                 }
             }) {
                 @Override
@@ -71,12 +76,14 @@ public class AuthService {
                 @Override
                 protected Response<String> parseNetworkResponse(NetworkResponse response) {
                     if (response.statusCode == 200 || response.statusCode == 409) {
-                        // Listener.success(true);
+                        listener.success(true);
                     }
 
                     return super.parseNetworkResponse(response);
                 }
             };
+
+            Volley.newRequestQueue(context).add(registerRequest);
 
         } catch (JSONException e) {
             e.printStackTrace();

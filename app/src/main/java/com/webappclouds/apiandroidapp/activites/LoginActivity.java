@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.webappclouds.apiandroidapp.R;
+import com.webappclouds.apiandroidapp.data.AuthService;
 
 /**
  * A login screen that offers login via email/password.
@@ -107,7 +108,19 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(true);
 
             // Use our auth service api calls.
+            RegisterInterface registerInterface = new RegisterInterface() {
+                @Override
+                public void success(Boolean success) {
+
+                }
+            };
+
+            AuthService.getInstance().registerUser(email, password, getBaseContext(), registerInterface);
         }
+    }
+
+    public interface RegisterInterface {
+        void success(Boolean success);
     }
 
     private boolean isEmailValid(String email) {
