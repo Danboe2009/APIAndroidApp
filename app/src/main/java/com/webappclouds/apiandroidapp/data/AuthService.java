@@ -96,7 +96,7 @@ public class AuthService {
     public void loginUser(String email, String password, Context context, final LoginActivity.LoginInterface listener) {
 
         try {
-            String url = Constants.REGISTER;
+            String url = Constants.LOGIN;
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("email", email);
             jsonBody.put("password", password);

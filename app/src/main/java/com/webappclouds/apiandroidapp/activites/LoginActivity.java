@@ -3,8 +3,10 @@ package com.webappclouds.apiandroidapp.activites;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -30,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private View mProgressView;
     private View mLoginFormView;
     private String authToken;
+    SharedPreferences prefs;
+    private boolean isLoggedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = findViewById(R.id.email);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -112,7 +117,12 @@ public class LoginActivity extends AppCompatActivity {
             final LoginInterface loginInterface = new LoginInterface() {
                 @Override
                 public void success(Boolean success) {
-
+                    if (success) {
+                        authToken = AuthService.getInstance().getAuthToken();
+                        isLoggedIn = true;
+                        prefs.edit().putString()
+                        prefs.
+                    }
                 }
             };
 
