@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/add_review_bt" />
 
     <TextView
         android:id="@+id/detail_truck_name"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/view_reviews_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -95,23 +95,23 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/add_review_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Add Review"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        app:layout_constraintBottom_toBottomOf="@+id/view_reviews_bt"
+        app:layout_constraintEnd_toStartOf="@+id/modify_truck_bt"
+        app:layout_constraintStart_toEndOf="@+id/view_reviews_bt" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/modify_truck_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="Modify"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/add_review_bt"
         app:layout_constraintEnd_toEndOf="parent" />
 
 
