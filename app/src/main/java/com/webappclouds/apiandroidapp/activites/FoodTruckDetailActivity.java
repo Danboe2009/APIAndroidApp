@@ -54,6 +54,13 @@ public class FoodTruckDetailActivity extends FragmentActivity implements OnMapRe
                 loadReviews(foodTruck);
             }
         });
+
+        addReviewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadLogin();
+            }
+        });
     }
 
     @Override
@@ -83,6 +90,11 @@ public class FoodTruckDetailActivity extends FragmentActivity implements OnMapRe
     public void loadReviews(FoodTruck truck) {
         Intent intent = new Intent(FoodTruckDetailActivity.this, ReviewsActivity.class);
         intent.putExtra(FoodTruckDetailActivity.EXTRA_ITEM_TRUCK, truck);
+        startActivity(intent);
+    }
+
+    public void loadLogin() {
+        Intent intent = new Intent(FoodTruckDetailActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 }
