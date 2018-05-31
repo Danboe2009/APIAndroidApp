@@ -80,6 +80,8 @@ public class DataService {
         return foodTruckList;
     }
 
+    // Request all the FoodTrucks Reviews
+
     public ArrayList<FoodTruckReview> downloadReviews(Context context, FoodTruck foodTruck, final ReviewsActivity.ReviewInterface listener) {
         String url = Constants.GET_REVIEWS + foodTruck.getId();
         final ArrayList<FoodTruckReview> reviewsList = new ArrayList<>();
