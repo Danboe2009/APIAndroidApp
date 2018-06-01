@@ -8,5 +8,5 @@ public class Constants {
     public final static String LOGIN = "https://missingcontroller.com/api/v1/account/login";
 
     public final static String AUTH_TOKEN = "AuthToken";
-
+    public final static String IS_LOGGED_IN = "IsLoggedIn";
 }

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.webappclouds.apiandroidapp.R;
+import com.webappclouds.apiandroidapp.constants.Constants;
 import com.webappclouds.apiandroidapp.data.AuthService;
 
 /**
@@ -120,8 +121,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (success) {
                         authToken = AuthService.getInstance().getAuthToken();
                         isLoggedIn = true;
-                        prefs.edit().putString()
-                        prefs.
+                        prefs.edit().putString(Constants.AUTH_TOKEN, authToken).apply();
+                        prefs.edit().putBoolean(Constants.IS_LOGGED_IN, true).apply();
+                        finish();
                     }
                 }
             };
