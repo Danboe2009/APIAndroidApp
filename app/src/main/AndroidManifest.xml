@@ -48,7 +48,8 @@
         <activity android:name=".activites.ReviewsActivity" />
         <activity
             android:name=".activites.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity android:name=".activites.AddReviewActivity"></activity>
     </application>
 
 </manifest>
