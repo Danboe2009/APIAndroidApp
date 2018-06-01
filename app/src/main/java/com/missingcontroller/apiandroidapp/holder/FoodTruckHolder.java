@@ -1,11 +1,11 @@
-package com.webappclouds.apiandroidapp.holder;
+package com.missingcontroller.apiandroidapp.holder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.webappclouds.apiandroidapp.R;
-import com.webappclouds.apiandroidapp.model.FoodTruck;
+import com.missingcontroller.apiandroidapp.R;
+import com.missingcontroller.apiandroidapp.model.FoodTruck;
 
 public class FoodTruckHolder extends RecyclerView.ViewHolder {
 

@@ -1,4 +1,4 @@
-package com.webappclouds.apiandroidapp.model;
+package com.missingcontroller.apiandroidapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

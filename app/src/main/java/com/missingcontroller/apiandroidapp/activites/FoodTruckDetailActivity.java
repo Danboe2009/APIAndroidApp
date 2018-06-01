@@ -1,4 +1,4 @@
-package com.webappclouds.apiandroidapp.activites;
+package com.missingcontroller.apiandroidapp.activites;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,9 +16,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.webappclouds.apiandroidapp.R;
-import com.webappclouds.apiandroidapp.constants.Constants;
-import com.webappclouds.apiandroidapp.model.FoodTruck;
+import com.missingcontroller.apiandroidapp.R;
+import com.missingcontroller.apiandroidapp.constants.Constants;
+import com.missingcontroller.apiandroidapp.model.FoodTruck;
 
 public class FoodTruckDetailActivity extends FragmentActivity implements OnMapReadyCallback {
 

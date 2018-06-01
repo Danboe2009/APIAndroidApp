@@ -1,4 +1,4 @@
-package com.webappclouds.apiandroidapp.activites;
+package com.missingcontroller.apiandroidapp.activites;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.webappclouds.apiandroidapp.R;
-import com.webappclouds.apiandroidapp.constants.Constants;
+import com.missingcontroller.apiandroidapp.R;
+import com.missingcontroller.apiandroidapp.constants.Constants;
+import com.missingcontroller.apiandroidapp.data.DataService;
 
 public class AddTruckActivity extends AppCompatActivity {
 
@@ -39,10 +40,10 @@ public class AddTruckActivity extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         authToken = prefs.getString(Constants.AUTH_TOKEN, "Does not exist.");
 
-        AddTruckInterface listener = new AddTruckInterface() {
+        final AddTruckInterface listener = new AddTruckInterface() {
             @Override
             public void success(Boolean success) {
-
+                finish();
             }
         };
 
@@ -50,6 +51,13 @@ public class AddTruckActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final String name = truckName.getText().toString();
+                final String type = foodType.getText().toString();
+                final Double cost = Double.parseDouble(avgCost.getText().toString());
+                final Double lat = Double.parseDouble(latitude.getText().toString());
+                final Double longi = Double.parseDouble(longitude.getText().toString());
+
+                DataService.getInstance().addTruck(name, type, cost, lat, longi, getBaseContext(), listener, authToken);
             }
         });
 

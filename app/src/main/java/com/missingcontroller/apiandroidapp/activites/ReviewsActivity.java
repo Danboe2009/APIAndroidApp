@@ -1,4 +1,4 @@
-package com.webappclouds.apiandroidapp.activites;
+package com.missingcontroller.apiandroidapp.activites;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,12 +6,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.webappclouds.apiandroidapp.R;
-import com.webappclouds.apiandroidapp.adapter.ReviewAdapter;
-import com.webappclouds.apiandroidapp.data.DataService;
-import com.webappclouds.apiandroidapp.model.FoodTruck;
-import com.webappclouds.apiandroidapp.model.FoodTruckReview;
-import com.webappclouds.apiandroidapp.view.ItemDecorator;
+import com.missingcontroller.apiandroidapp.R;
+import com.missingcontroller.apiandroidapp.adapter.ReviewAdapter;
+import com.missingcontroller.apiandroidapp.data.DataService;
+import com.missingcontroller.apiandroidapp.model.FoodTruck;
+import com.missingcontroller.apiandroidapp.model.FoodTruckReview;
+import com.missingcontroller.apiandroidapp.view.ItemDecorator;
 
 import java.util.ArrayList;
 

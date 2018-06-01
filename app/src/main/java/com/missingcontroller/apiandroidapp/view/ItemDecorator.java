@@ -1,4 +1,4 @@
-package com.webappclouds.apiandroidapp.view;
+package com.missingcontroller.apiandroidapp.view;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

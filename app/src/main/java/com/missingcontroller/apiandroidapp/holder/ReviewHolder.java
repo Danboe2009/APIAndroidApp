@@ -1,11 +1,11 @@
-package com.webappclouds.apiandroidapp.holder;
+package com.missingcontroller.apiandroidapp.holder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.webappclouds.apiandroidapp.R;
-import com.webappclouds.apiandroidapp.model.FoodTruckReview;
+import com.missingcontroller.apiandroidapp.R;
+import com.missingcontroller.apiandroidapp.model.FoodTruckReview;
 
 public class ReviewHolder extends RecyclerView.ViewHolder {
 

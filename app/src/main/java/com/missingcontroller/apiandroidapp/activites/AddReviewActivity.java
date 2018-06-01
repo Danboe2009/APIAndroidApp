@@ -1,4 +1,4 @@
-package com.webappclouds.apiandroidapp.activites;
+package com.missingcontroller.apiandroidapp.activites;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.webappclouds.apiandroidapp.R;
-import com.webappclouds.apiandroidapp.constants.Constants;
-import com.webappclouds.apiandroidapp.data.DataService;
-import com.webappclouds.apiandroidapp.model.FoodTruck;
+import com.missingcontroller.apiandroidapp.R;
+import com.missingcontroller.apiandroidapp.constants.Constants;
+import com.missingcontroller.apiandroidapp.data.DataService;
+import com.missingcontroller.apiandroidapp.model.FoodTruck;
 
 public class AddReviewActivity extends AppCompatActivity {
 

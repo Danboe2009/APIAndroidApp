@@ -1,4 +1,4 @@
-package com.webappclouds.apiandroidapp.activites;
+package com.missingcontroller.apiandroidapp.activites;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -18,9 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.webappclouds.apiandroidapp.R;
-import com.webappclouds.apiandroidapp.constants.Constants;
-import com.webappclouds.apiandroidapp.data.AuthService;
+import com.missingcontroller.apiandroidapp.R;
+import com.missingcontroller.apiandroidapp.constants.Constants;
+import com.missingcontroller.apiandroidapp.data.AuthService;
 
 /**
  * A login screen that offers login via email/password.
