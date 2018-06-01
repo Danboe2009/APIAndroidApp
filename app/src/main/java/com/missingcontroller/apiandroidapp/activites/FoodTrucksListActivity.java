@@ -46,6 +46,20 @@ public class FoodTrucksListActivity extends AppCompatActivity {
         addTruckBtn = findViewById(R.id.add_truck_btn);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+
+
+        addTruckBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadAddTruck();
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         TrucksDownloaded listener = new TrucksDownloaded() {
             @Override
             public void success(Boolean success) {
@@ -55,15 +69,7 @@ public class FoodTrucksListActivity extends AppCompatActivity {
             }
         };
 
-        setUpRecycler();
         trucks = DataService.getInstance().downloadAllFoodTrucks(this, listener);
-
-        addTruckBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
     private void setUpRecycler() {
