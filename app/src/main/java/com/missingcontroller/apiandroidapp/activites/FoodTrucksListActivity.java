@@ -46,8 +46,6 @@ public class FoodTrucksListActivity extends AppCompatActivity {
         addTruckBtn = findViewById(R.id.add_truck_btn);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-
-
         addTruckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

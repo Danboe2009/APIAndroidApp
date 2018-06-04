@@ -71,7 +71,7 @@ public class FoodTruckDetailActivity extends FragmentActivity implements OnMapRe
         modifyTrucksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                modifyTruck();
             }
         });
     }

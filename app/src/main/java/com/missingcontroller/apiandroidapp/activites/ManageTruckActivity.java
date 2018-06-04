@@ -27,6 +27,15 @@ public class ManageTruckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_truck);
 
+        modifyName = findViewById(R.id.modify_name_edit);
+        modifyFoodType = findViewById(R.id.modify_foodtype_edit);
+        modifyAvgCost = findViewById(R.id.modify_avgcost_edit);
+        modifyLatitude = findViewById(R.id.modify_latitude);
+        modifyLongitude = findViewById(R.id.modify_longitude);
+
+        submitBtn = findViewById(R.id.modify_submit);
+        cancelBtn = findViewById(R.id.modify_cancel);
+
         foodTruck = getIntent().getParcelableExtra(FoodTruckDetailActivity.EXTRA_ITEM_TRUCK);
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
