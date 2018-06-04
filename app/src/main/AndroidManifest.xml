@@ -50,7 +50,8 @@
             android:name=".activites.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".activites.AddReviewActivity" />
-        <activity android:name=".activites.AddTruckActivity"></activity>
+        <activity android:name=".activites.AddTruckActivity" />
+        <activity android:name=".activites.ManageTruckActivity" />
     </application>
 
 </manifest>
