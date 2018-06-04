@@ -49,7 +49,7 @@ public class ManageTruckActivity extends AppCompatActivity {
 
         modifyName.setText(foodTruck.getName());
         modifyFoodType.setText(foodTruck.getFoodType());
-        modifyAvgCost.setText("$" + foodTruck.getAvgCost());
+        modifyAvgCost.setText("" + foodTruck.getAvgCost());
         modifyLatitude.setText("" + foodTruck.getLatitude());
         modifyLongitude.setText("" + foodTruck.getLongitude());
 

@@ -297,7 +297,7 @@ public class DataService {
             final String mRequestBody = jsonBody.toString();
             final String bearer = "Bearer " + authToken;
 
-            JsonObjectRequest addTruck = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+            JsonObjectRequest addTruck = new JsonObjectRequest(Request.Method.PUT, url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
